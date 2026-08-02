@@ -23,7 +23,7 @@ The database includes:
 
 https://sql-promo.s3.eu-north-1.amazonaws.com/index.html
 
-If for ANY Reason you experience delay, please download the video via the *download link*
+If for ANY Reason you experience delay, please download the video via the *download link* on the webpage
 
 ---
 
