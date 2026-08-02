@@ -36,6 +36,39 @@ SELECT
 FROM campaign_metrics
 ORDER BY conversion_rate_90day DESC;
 
+-- Conversion Rate & ROI
+
+WITH roi_analysis AS (
+   SELECT 
+   c.campaign_id,
+   ROUND((SUM(revenue) - c.budget) / c.budget , 2) AS roi,
+   budget,
+   SUM(revenue) AS total_revenue
+   FROM campaigns c, conversions conv
+   WHERE c.campaign_id = conv.campaign_id
+   GROUP BY c.campaign_id
+),
+   conversions_rates AS (
+      SELECT
+      c.campaign_id,
+      COUNT(DISTINCT conv.customer_id) / COUNT(DISTINCT cc.customer_id) * 100 AS conversion_rate
+      FROM campaigns c, conversions conv, campaign_contacts cc
+      WHERE c.campaign_id = conv.campaign_id
+      AND c.campaign_id = cc.campaign_id
+      GROUP BY c.campaign_id
+)
+SELECT 
+ra.campaign_id,
+roi,
+conversion_rate,
+budget,
+total_revenue,
+RANK() OVER(ORDER BY roi DESC) AS roi_rank,
+RANK() OVER(ORDER BY conversion_rate DESC) AS conv_rank 
+FROM roi_analysis ra, conversions_rates cr
+WHERE ra.campaign_id = cr.campaign_id
+GROUP BY ra.campaign_id;
+
 -- Funnel Analysis
 
 WITH funnel AS (
