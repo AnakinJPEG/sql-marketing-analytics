@@ -1,4 +1,5 @@
-# ROI_per_campaign
+-- ROI Per Campaign
+
 SELECT
 c.campaign_id,
 ROUND((SUM(revenue) - c.budget) / c.budget, 2) AS roi
@@ -6,7 +7,8 @@ FROM campaigns c, conversions conv
 WHERE c.campaign_id = conv.campaign_id
 GROUP BY campaign_id;
 
-#customer_journey
+-- Customer Journey
+
 WITH customer_journey AS (
 SELECT
 conv.customer_id,
@@ -23,7 +25,7 @@ RANK() OVER(ORDER BY total_revenue DESC) AS revenue_rank,
 RANK() OVER(ORDER BY total_conversions DESC) AS conversion_rank
 FROM customer_journey;
 
-#channel_performance
+-- Channel Performance
 WITH channel_performance_rank AS(
     SELECT
     c.channel,
@@ -34,7 +36,7 @@ WITH channel_performance_rank AS(
 )
 SELECT * FROM channel_performance_rank;
 
-#campaign_conversion_rate
+-- Campaign Conversion Rate
 WITH campaign_conv_rank AS (
 SELECT
 conv.campaign_id,
