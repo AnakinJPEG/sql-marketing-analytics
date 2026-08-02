@@ -19,6 +19,12 @@ The database includes:
 - Conversions (purchases)
 - Products
 
+- Walkthrough:
+
+https://sql-promo.s3.eu-north-1.amazonaws.com/index.html
+
+If for ANY Reason you experience great delay, please download the video via the *download link*
+
 ---
 
 ## Key Business Questions Answered
