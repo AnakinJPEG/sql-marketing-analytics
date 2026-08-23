@@ -89,7 +89,7 @@ CALL channel_performance();
 
 ## About Author
 Damian
-dont.kys1133@gmail.com / dont.kys1133@proton.me
+damian.hristov@proton.me
 
 I’m an aspiring data analyst with a passion for uncovering insights through SQL. This project is part of my portfolio to demonstrate my ability to work with real‑world data and deliver business value.
 
